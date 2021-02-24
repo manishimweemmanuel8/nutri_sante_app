@@ -28,6 +28,15 @@
                                     <i class="fa fa-fw fa-file-text-o"></i> Edit New Product
                                 </h4>
                                 <span class="pull-right">
+                                    @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                    
                                 </span>
                             </div>

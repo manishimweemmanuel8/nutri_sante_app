@@ -36,7 +36,7 @@
                                             <br>
                                             Kicukiro, KG 9435 L
                                             <br>
-                                            <abbr title="Phone">P:</abbr> 0788888888
+                                            <abbr title="Phone">Phone:</abbr> 0788838755
                                         </address>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6 text-right">

@@ -53,9 +53,9 @@
                                             <td>
                                                 <span class="badge">
                                                 @foreach ($admin->roles as $role)
-                                                <span class="badge-warning badge-pill ml-2">
+                                                {{-- <span class=""> --}}
                                             {{ $role->name }}
-                                        </span>
+                                        {{-- </span> --}}
                                     </span>
                                          @endforeach
 
@@ -67,7 +67,8 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a class="delete btn btn-danger" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $admin->id }}').submit();">
+                                                <a class="
+                                             btn btn-danger" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $admin->id }}').submit();">
                                                     
                                                     <i class="fa fa-trash-o"></i> Delete
 

@@ -55,7 +55,7 @@
                                         <tr>
                                             <td>{{ $payment->created_at }}</td>
                                             
-                                            <td>{{ $payment->customer->names }}</td>
+                                            <td>{{ DB::table('customers')->where('id',$payment->customer_id)->value('names') }}</td>
                                             <td>
                                                {{ $payment->user_id }}
 
@@ -66,7 +66,7 @@
                                              
                                             <td>
                                                 <a class=" btn btn-danger" href="{{route('payment.destroy',['id'=>$payment->id])}}"  onclick="return confirmation();">
-                                                    <i class="fa fa-trash-o"></i> Delete
+                                                    <i class="fa fa-trash-o"></i> Refund
                                                 </a>
                                             </td>
                                         </tr>

@@ -88,7 +88,7 @@
                                                         <span class='require'>*</span>
                                                     </label>
                                                     <div class="col-md-7">
-                                                        <select name="role_id[]" id="role_id" class="form-control {{ $errors->has('role_id') ? ' is-invalid' : '' }}" >
+                                                        <select name="role_id[]" id="role_id" class="form-control {{ $errors->has('role_id') ? ' is-invalid' : '' }}" multiple >
                                                             <option value>Select Role</option>
                                                             @foreach ($roles as $role)
                                                                 <option value="{{ $role->id }}">{{ $role->name }}</option>

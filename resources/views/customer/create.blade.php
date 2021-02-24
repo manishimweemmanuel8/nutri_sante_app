@@ -6,7 +6,7 @@
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="UTF-8">
-    <title>View</title>
+    <title>Create customer</title>
     <!-- <link rel="shortcut icon" href="favicon.ico" /> -->
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- global css -->
@@ -549,7 +549,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <!--section starts-->
-                <h2>Add New Customer</h2>
+                <h2>Add New Customer </h2>
                 <ol class="breadcrumb">
                     <li>
                         <a href="index.php">
@@ -574,6 +574,21 @@
                                 </h4>
                                 <span class="pull-right">
                                     
+                                    @if(session()->has('message'))
+                                    <div class="alert alert-success">
+                                    {{ session()->get('message') }}
+                                    </div>
+                                        @endif
+
+                                        @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                 </span>
                             </div>
                             <div class="panel-body">

@@ -32,7 +32,8 @@ class CunsultationController extends Controller
 
         //
          $consultates = Payment::
-                    where('created_at', '>=', date('Y-m-d'). ' 00:00:00')->get();
+                    where('status', 'start')->get();
+                    // where('created_at', '>=', date('Y-m-d'). ' 00:00:00')->get();
         return view('consultation.customer', compact('consultates'));
         
     }
@@ -265,18 +266,31 @@ class CunsultationController extends Controller
 
     public function betweenDateSalesReport(Request $request){
 
+        $request->validate([
+            'from'=>'required|before:now',
+            'to'=>'required',
+
+        ]);
+
+
+
          $total=0;
          $from = $request->get('from');
         $to = $request->get('to');
         $todayDate = date("Y-m-d");
 
          // session
+         if($to > $from){
            $consultations = Cunsultation::
                 whereBetween('created_at', [$from. ' 00:00:00', $to. ' 00:00:00'])
                 ->get();
 
             return view('consultation/report.daily', compact('consultations'));
 
+        }else{
+            return redirect()->route('report.daily')->with('message', 'to date is less than from data');
+
+         }
         }
 
         

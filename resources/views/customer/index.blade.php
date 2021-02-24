@@ -45,13 +45,12 @@
                                             <th class="text-center">Names</th>
                                             <th class="text-center">Sex</th>
                                             <th class="text-center">Marital</th>
-                                            <th class="text-center">Occupation</th>
+                                            {{-- <th class="text-center">Occupation</th> --}}
                                             <th class="text-center">Phone</th>
-                                            <th class="text-center">Email</th>
-                                            <th class="text-center">Sector</th>
+                                            <th class="text-center">Country</th>
+                                            <th class="text-center">Destrict</th>
                                             <th class="text-center">Action</th>
                                             <th class="text-center">Edit/Save</th>
-                                            <th class="text-center">Delete/Cancel</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -68,24 +67,22 @@
                                             </td>
                                             <td> {{ $customer->maritial_Status }}
                                         </td>
-                                            <td>
-                                               {{ $customer->occupation }}
-                                            </td>
+                                          
                                             <td>
                                                {{ $customer->phone_no }}
                                             </td>
                                             <td>
-                                               {{ $customer->email }}
+                                               {{ $customer->country }}
                                             </td>
 
-                                           @if(is_null($customer->country))
+                                           @if($customer->country == 'rwanda')
                                              <td>
-                                               {{DB::table('sectors')->where('id',$customer->sector_id)->value('name')}}
+                                               {{DB::table('districts')->where('id',$customer->district_id)->value('name')}}
 
                                             </td>
                                             @else
                                              <td>
-                                               {{ $customer->country }}
+                                                -
 
                                             </td>
                                             @endif
@@ -100,11 +97,7 @@
                                                     <i class="fa fa-fw fa-edit"></i> Edit
                                                 </a>
                                             </td>
-                                            <td>
-                                                <a class=" btn btn-danger" href="{{route('customer.destroy',['id'=>$customer->id])}}" onclick="return confirmation()">
-                                                    <i class="fa fa-trash-o"></i> Delete
-                                                </a>
-                                            </td>
+                                            
                                         </tr>
 
                                          @endforeach 

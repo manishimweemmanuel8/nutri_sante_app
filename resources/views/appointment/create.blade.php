@@ -28,6 +28,15 @@
                                     <i class="fa fa-fw fa-file-text-o"></i> Add New Appointment
                                 </h4>
                                 <span class="pull-right">
+                                    @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
 
                                 </span>
                             </div>
@@ -107,7 +116,7 @@
                                 </span>
                             </div>
                             <div class="panel-body table-responsive">
-                                 @include('multiauth::message')
+                                 {{-- @include('multiauth::message') --}}
                                 <table class="table table-bordered text-center" id="fitness-table">
                                     <thead>
                                         <tr>
@@ -141,7 +150,7 @@
                                             </td>
                                             <td>
                                                 <a class=" btn btn-danger" href="{{route('appointment.destroy',['id'=>$appointment->id])}}" onclick="return confirmation()">
-                                                    <i class="fa fa-trash-o"></i> Delete
+                                                    <i class="fa fa-trash-o"></i> Cancel
                                                 </a>
                                             </td>
                                         </tr>

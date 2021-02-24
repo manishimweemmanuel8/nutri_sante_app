@@ -6,7 +6,7 @@
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="UTF-8">
-    <title>View</title>
+    <title>Nutri-sante</title>
     <!-- <link rel="shortcut icon" href="favicon.ico" /> -->
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- global css -->
@@ -181,12 +181,12 @@
                             </a>
                             <ul class="sub-menu">
 
-                                <li>
+                                {{-- <li>
                                     <a href="{{ route('customer.index') }}">
                                         <i class="menu-icon text-success fa fa-pencil"></i> create Payment
                                     </a>
                                 </li>
-                                
+                                 --}}
                                 <li>
                                     <a href="{{ route('payment.index') }}">
                                         <i class="menu-icon text-success fa fa-pencil"></i> View Payment
@@ -307,6 +307,23 @@
                             </ul>
                         </li>
 
+                        <li class="menu-dropdown">
+                            <a href="#">
+                                <i class="text-info menu-icon fa fa-fw fa-newspaper-o"></i>
+                                <span class="mm-text">Document</span>
+                                <span class="fa fa-angle-down pull-right"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="{{ route('document.create') }}">
+                                        <i class="text-primary menu-icon fa fa-inbox"></i> View Document
+                                    </a>
+                                </li>
+                              
+                                
+                            </ul>
+                        </li>
+
                          <li class="menu-dropdown">
                             <a href="#">
                                 <i class="text-info menu-icon fa fa-fw fa-newspaper-o"></i>
@@ -332,7 +349,7 @@
 
                         @endadmin
 
-                         @admin('production')
+                         {{-- @admin('production')
 
                         <li class="menu-dropdown">
                             <a href="#">
@@ -705,7 +722,7 @@
 
 
 
-                        @endadmin
+                        @endadmin --}}
 
                         @endguest
                         

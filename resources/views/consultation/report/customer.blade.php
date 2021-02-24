@@ -34,7 +34,7 @@
                                 <table class="table table-bordered text-center" id="fitness-table">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">Payment Time</th>
+                                            <th class="text-center">Date</th>
                                             <th class="text-center">Names</th>
                                             <th class="text-center">Sex</th>
                                             <th class="text-center">Marital</th>

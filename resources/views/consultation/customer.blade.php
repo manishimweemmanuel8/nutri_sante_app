@@ -38,8 +38,9 @@
                                             <th class="text-center">Names</th>
                                             <th class="text-center">Sex</th>
                                             <th class="text-center">Marital</th>
-                                            <th class="text-center">Occupation</th>
-                                            <th class="text-center">Location</th>
+                                            <th class="text-center">Phone</th>
+                                            <th class="text-center">Country</th>
+                                            <th class="text-center">District</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
@@ -62,21 +63,25 @@
                                             </td>
 
                                              <td>
-                                               {{ $consultate->customer->occupation }}
+                                               {{ $consultate->customer->phone }}
 
                                             </td>
 
-                                            @if(is_null($consultate->customer->country))
-                                             <td>
-                                               {{DB::table('sectors')->where('id',$consultate->customer->sector_id)->value('name')}}
-
-                                            </td>
-                                            @else
-                                             <td>
-                                               {{ $consultate->customer->country }}
-
-                                            </td>
-                                            @endif
+                                            <td>
+                                                {{ $consultate->customer->country }}
+                                             </td>
+ 
+                                            @if($consultate->customer->country == 'rwanda')
+                                              <td>
+                                                {{DB::table('districts')->where('id',$consultate->customer->district_id)->value('name')}}
+ 
+                                             </td>
+                                             @else
+                                              <td>
+                                                 -
+ 
+                                             </td>
+                                             @endif
                                             <td>
                                                  <a class=" btn btn-success" href="{{route('consultation.create',['id'=>$consultate->id])}}">
                                                     <i class="fa fa-fw fa-edit"></i> Continue

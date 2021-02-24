@@ -65,7 +65,9 @@
                                             <td>
                                                 @permitTo('DeleteRole,UpdateRole')
 
-                                                <a href="" class="delete btn btn-danger"
+                                                <a href="" class=" btn btn-danger" 
+
+                                                
                                                 onclick="event.preventDefault(); document.getElementById('delete-form-{{ $role->id }}').submit();">
                                                     
                                                     <i class="fa fa-trash-o"></i> Delete
@@ -94,6 +96,8 @@
                 </div>
             </div>
         </aside>
+
+        
 
         
 

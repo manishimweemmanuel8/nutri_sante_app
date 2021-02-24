@@ -209,7 +209,7 @@
                                             <div class="form-actions">
                                                 <div class="row">
                                                     <div class="col-md-offset-3 col-md-9">
-                                                        <input type="submit" class="mahesh btn btn-primary" value="Save"> &nbsp;
+                                                        <input type="submit" class="mahesh btn btn-primary" value="Submit"> &nbsp;
                                                         <input type="button" class="btn btn-danger" value="Cancel"> &nbsp;
                                                         <input type="reset" id="add-news-reset-editable" class="btn btn-default" value="Reset">
                                                     </div>
@@ -410,7 +410,7 @@
                                                         @if($consultation)
                                                         <input type="hidden" name="id" value = "{{$consultation->id}}">
                                                         @endif
-                                                        <input type="submit" class="mahesh btn btn-primary" value="Save"> &nbsp;
+                                                        <input type="submit" class="mahesh btn btn-primary" value="Submit"> &nbsp;
                                                         <input type="button" class="btn btn-danger" value="Cancel"> &nbsp;
                                                         <input type="reset" id="add-news-reset-editable" class="btn btn-default" value="Reset">
                                                     </div>

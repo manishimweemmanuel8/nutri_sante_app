@@ -31,6 +31,21 @@
                                     <i class="fa fa-fw fa-file-text-o"></i> Summary From 
                                 </h4>
                                 <span class="pull-right">
+                                    @if(session()->has('message'))
+                                    <div class="alert alert-danger">
+                                    {{ session()->get('message') }}
+                                    </div>
+                                        @endif
+
+                                        @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                    
                                 </span>
                             </div>
@@ -98,7 +113,7 @@
                                 </span>
                             </div>
                             <div class="panel-body table-responsive">
-                                 @include('multiauth::message')
+                                 {{-- @include('multiauth::message') --}}
             
            
                                 <table class="table table-bordered" id="example">

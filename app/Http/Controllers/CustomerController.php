@@ -56,14 +56,17 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         //
+      
         $request->validate([
             'names'=>'required',
             'sex'=>'required',
-            'maritial_Status'=>'required',
-           
-            'dob'=>'required',
-            'phone_no'=>'required',
+            'maritial_Status'=>'required',         
+            'phone_no'=>'required|max:10',
+            'dob'=>'required|before:now',
         ]);
+     
+
+       
         $customer = new Customer();
   
         $customer->names= $request->input('names');
@@ -89,6 +92,7 @@ class CustomerController extends Controller
 
 
         return redirect()->route('customer.index')->with('message','customer registed Successfully');
+    
     }
 
     /**
@@ -132,12 +136,11 @@ class CustomerController extends Controller
             'names'=>'required',
             'sex'=>'required',
             'maritial_Status'=>'required',
-            'occupation'=>'required',
-            'dob'=>'required',
-            'email'=>'required',
-            'phone_no'=>'required',
+           
+            'phone_no'=>'required|max:10',
+            'dob'=>'required|before:now',
         ]);
-
+      
         $customer = Customer::find($request->input('id'));
         $customer->names= $request->input('names');
         $customer->sex= $request->input('sex');
@@ -148,6 +151,7 @@ class CustomerController extends Controller
         $customer->phone_no= $request->input('phone_no');
         $customer->update(); 
         return redirect()->route('customer.index')->with('message','customer Updated Successfully');
+        
     }
 
     /**

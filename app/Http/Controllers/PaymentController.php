@@ -215,17 +215,30 @@ class PaymentController extends Controller
 
      public function betweenDateSalesReport(Request $request){
 
+        $request->validate([
+            'from'=>'required|before:now',
+            'to'=>'required',
+
+        ]);
+
+
+
          $total=0;
          $from = $request->get('from');
         $to = $request->get('to');
         $todayDate = date("Y-m-d");
 
          // session
+         if($to > $from){
            $payments = Payment::
                 whereBetween('created_at', [$from. ' 00:00:00', $to. ' 00:00:00'])
                 ->get();
 
             return view('payment.daily', compact('payments','total'));
+         }else{
+            return redirect()->route('report.daily.payment')->with('message', 'to date is less than from data');
+
+         }
 
         }
 

@@ -42,8 +42,8 @@ class AppointmentController extends Controller
         //
          $request->validate([
             'customer'=>'required',
-            'phone'=>'required',
-            'date'=>'required',
+            'phone'=>'required|max:10',
+            'date'=>'required|after:now',
             'time'=>'required',
           
             
@@ -101,9 +101,9 @@ class AppointmentController extends Controller
     {
         //
         $request->validate([
-          'customer'=>'required',
-            'phone'=>'required',
-            'date'=>'required',
+            'customer'=>'required',
+            'phone'=>'required|max:10',
+            'date'=>'required|after:now',
             'time'=>'required',
         ]);
 

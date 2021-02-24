@@ -29,6 +29,22 @@
                                     <i class="fa fa-fw fa-file-text-o"></i> Summary From 
                                 </h4>
                                 <span class="pull-right">
+
+                                    @if(session()->has('message'))
+                                    <div class="alert alert-danger">
+                                    {{ session()->get('message') }}
+                                    </div>
+                                        @endif
+
+                                        @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                    
                                 </span>
                             </div>
@@ -92,6 +108,7 @@
                                 <i class="fa fa-newspaper-o" aria-hidden="true"></i> View Consultation list
                             </h4>
                                 <span class="pull-right">
+                                    
                                   
                                 </span>
                             </div>
@@ -103,8 +120,9 @@
                                             <th class="text-center">Names</th>
                                             <th class="text-center">Sex</th>
                                             <th class="text-center">Marital</th>
-                                            <th class="text-center">Occupation</th>
-                                            <th class="text-center">Cell</th>
+                                            <th class="text-center">Phone</th>
+                                            <th class="text-center">Country</th>
+                                            <th class="text-center">District</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
@@ -126,21 +144,26 @@
 
                                             </td>
 
+                                            <td>
+                                                {{ $consultation->customer->phone }}
+ 
+                                             </td>
+ 
                                              <td>
-                                               {{ $consultation->customer->occupation }}
-
-                                            </td>
-                                             @if(is_null($consultation->customer->country))
-                                             <td>
-                                               {{DB::table('sectors')->where('id',$consultation->customer->sector_id)->value('name')}}
-
-                                            </td>
-                                            @else
-                                             <td>
-                                               {{ $consultation->customer->country }}
-
-                                            </td>
-                                            @endif
+                                                 {{ $consultation->customer->country }}
+                                              </td>
+  
+                                             @if($consultation->customer->country == 'rwanda')
+                                               <td>
+                                                 {{DB::table('districts')->where('id',$consultation->customer->district_id)->value('name')}}
+  
+                                              </td>
+                                              @else
+                                               <td>
+                                                  -
+  
+                                              </td>
+                                              @endif
                                             
                                             <td>
                                                  <a class=" btn btn-success" href="{{route('more.info',['id'=>$consultation->id])}}">
