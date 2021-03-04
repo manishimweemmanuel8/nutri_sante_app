@@ -166,7 +166,7 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('customer.index') }}">
-                                        <i class="menu-icon text-success fa fa-pencil"></i> View Customer
+                                        <i class="menu-icon text-success fa fa-pencil"></i> Customers
                                     </a>
                                 </li>
                                 
@@ -189,7 +189,7 @@
                                  --}}
                                 <li>
                                     <a href="{{ route('payment.index') }}">
-                                        <i class="menu-icon text-success fa fa-pencil"></i> View Payment
+                                        <i class="menu-icon text-success fa fa-pencil"></i>  Payments
                                     </a>
                                 </li>
                             </ul>

@@ -53,7 +53,7 @@
                                                             <span class="input-group-addon">
                                                                 <i class="fa fa-fw fa-user-md text-primary"></i>
                                                             </span>
-                                                            <input type="text" class="form-control" id="usr_name"  name="customer_id" value="{{$customer->id}}">
+                                                            <input type="text" class="form-control" id="field_ucfirst"  name="customer_id" value="{{$customer->id}}"  >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -68,7 +68,7 @@
                                                             <span class="input-group-addon">
                                                                 <i class="fa fa-fw fa-user-md text-primary"></i>
                                                             </span>
-                                                            <input type="text" class="form-control" id="usr_name"  name="payment_id" value="{{$id}}">
+                                                            <input type="text" class="form-control" id="field_ucfirst"   name="payment_id" value="{{$id}}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -85,7 +85,7 @@
 
 
                                                         <input type="text" 
-                                                        name="blood_type" value="{{$consultation->blood_type}}" hidden>
+                                                        name="blood_type" value="{{$consultation->blood_type}}"   hidden>
                                                         <label for="contactChoice2">{{$consultation->blood_type}}</label>
                                                         &nbsp;
 
@@ -131,25 +131,25 @@
 
                                                 <div class="form-group">
                                                     <label class="col-md-3 control-label">
-                                                        Weight
+                                                        Weight(Kg)
                                                         <span class='require'>*</span>
                                                     </label>
                                                     <div class="col-md-7">
-                                                        <input class="tags_options fill_it form-control" id="activate" multiple="multiple" name="weight" required>
+                                                        <input class="tags_options fill_it form-control" id="activate" multiple="multiple" name="weight"  required>
                                                         
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-md-3 control-label">
-                                                        Height
+                                                        Height(meter)
                                                         <span class='require'>*</span>
                                                     </label>
                                                     <div class="col-md-7">
                                                         @if($consultation)
-                                                        <input class="tags_options fill_it form-control" id="activate" multiple="multiple" name="height" value="{{$consultation->height}}" required>
+                                                        <input class="tags_options fill_it form-control" id="field_ucfirst" multiple="multiple" name="height" value="{{$consultation->height}}" required>
                                                         @else
-                                                        <input class="tags_options fill_it form-control" id="activate" multiple="multiple" name="height" required>
+                                                        <input class="tags_options fill_it form-control" id="field_ucfirst" multiple="multiple" name="height" required>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -160,29 +160,21 @@
                                                         <span class='require'>*</span>
                                                     </label>
                                                     <div class="col-md-7">
-                                                        <input class="tags_options fill_it form-control" id="activate" multiple="multiple" name="ct_munda" required>
+                                                        <input class="tags_options fill_it form-control" id="field_ucfirst" multiple="multiple" name="ct_munda" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-md-3 control-label">
                                                         MUAC
-                                                        <span class='require'>*</span>
+                                                        <span class='require'></span>
                                                     </label>
                                                     <div class="col-md-7">
-                                                        <input class="tags_options fill_it form-control" id="activate" multiple="multiple" name="ct_ukuboko" required>
+                                                        <input class="tags_options fill_it form-control" id="field_ucfirst" multiple="multiple" name="ct_ukuboko" >
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">
-                                                        Diagnosis
-                                                        <span class='require'>*</span>
-                                                    </label>
-                                                    <div class="col-md-7">
-                                                        <input class="tags_options fill_it form-control" id="activate" multiple="multiple" name="diagnosis" required>
-                                                    </div>
-                                                </div>
+                           
 
                                                 <div class="form-group">
                                                     <label class="col-md-3 control-label">
@@ -190,7 +182,7 @@
                                                         <span class='require'>*</span>
                                                     </label>
                                                     <div class="col-md-7">
-                                                        <input class="tags_options fill_it form-control" id="activate" multiple="multiple" name="associated_deseases" required>
+                                                        <input class="tags_options fill_it form-control" id="field_ucfirst" multiple="multiple" name="associated_deseases" required>
                                                     </div>
                                                 </div>
 
@@ -201,7 +193,7 @@
                                                     </label>
                                                     <div class="col-md-7 ">
                                                         
-                                                            <textarea name="reason" class="summernote edi-css form-control required"></textarea>
+                                                            <textarea name="reason" class="summernote edi-css form-control required" ></textarea>
                                                         
                                                     </div>
                                                 </div>
@@ -243,11 +235,11 @@
 
                                       <!-- form -->
                             <div class="panel-body">  
-                              @if(session()->has('message'))
+                              {{-- @if(session()->has('message'))
                                 <div class="alert alert-success">
                                 {{ session()->get('message') }}
                                 </div>
-                                    @endif        
+                                    @endif         --}}
                                  <div class="row">
                                     <div class="col-md-12">
                                          <form id="add_users_form" method="post" action="{{route('consultation.nutrition')}}" class="form-horizontal">
@@ -274,7 +266,7 @@
                                             <td bgcolor="yellow">{{$consultation->customer->names}}</td>
                                             <td bgcolor="yellow">{{$consultation->weight}} kg</td>
                                             <td bgcolor="yellow">{{$consultation->height}} m</td>
-                                            <td bgcolor="yellow">{{$consultation->bmi}} </td>
+                                            <td bgcolor="yellow">{{number_format((float)$consultation->bmi, 1, '.', '')}} </td>
                                             <td bgcolor="yellow">Underweight</td>
                                             
                                       
@@ -284,7 +276,7 @@
                                             <td bgcolor="green">{{$consultation->customer->names}}</td>
                                             <td bgcolor="green">{{$consultation->weight}} kg</td>
                                             <td bgcolor="green">{{$consultation->height}} m</td>
-                                            <td bgcolor="green">{{$consultation->bmi}} </td>
+                                            <td bgcolor="green">{{number_format((float)$consultation->bmi, 1, '.', '')}} </td>
                                             <td bgcolor="green">Ideal BMI</td>
                                             
                                       
@@ -294,7 +286,7 @@
                                             <td bgcolor="orange">{{$consultation->customer->names}}</td>
                                             <td bgcolor="orange">{{$consultation->weight}} kg</td>
                                             <td bgcolor="orange">{{$consultation->height}} m</td>
-                                            <td bgcolor="orange">{{$consultation->bmi}} </td>
+                                            <td bgcolor="orange">{{number_format((float)$consultation->bmi, 1, '.', '')}} </td>
                                             <td bgcolor="orange"> Overweight</td>
                                             
                                       
@@ -304,7 +296,7 @@
                                             <td bgcolor="red">{{$consultation->customer->names}}</td>
                                             <td bgcolor="red">{{$consultation->weight}} kg</td>
                                             <td bgcolor="red">{{$consultation->height}} m</td>
-                                            <td bgcolor="red">{{$consultation->bmi}} </td>
+                                            <td bgcolor="red">{{number_format((float)$consultation->bmi, 1, '.', '')}} </td>
                                             <td bgcolor="red"> Obese</td>
                                             
                                       
@@ -315,7 +307,7 @@
                                             <td bgcolor="red">{{$consultation->customer->names}}</td>
                                             <td bgcolor="red">{{$consultation->weight}} kg</td>
                                             <td bgcolor="red">{{$consultation->height}} m</td>
-                                            <td bgcolor="red">{{$consultation->bmi}} </td>
+                                            <td bgcolor="red">{{number_format((float)$consultation->bmi, 1, '.', '')}} </td>
                                             <td bgcolor="red">Serverely</td>
                                             
                                       
@@ -327,7 +319,7 @@
                                             <td>{{$consultation->customer->names}}</td>
                                             <td>{{$consultation->weight}} kg</td>
                                             <td>{{$consultation->height}} m</td>
-                                            <td>{{$consultation->bmi}} </td>
+                                            <td>{{number_format((float)$consultation->bmi, 1, '.', '')}} </td>
                                             <td>Morbidly Obese</td>
                                             
                                       
@@ -355,15 +347,15 @@
                                                     <label class="col-md-3 control-label">Food to eat<span class='require'> *</span></label>
                                                     <div class="col-md-7 ">
                                                         
-                                                            <textarea name="food_to_eat" class="summernote edi-css form-control" required></textarea>
+                                                            <textarea name="food_to_eat" id="field_ucfirst"  class="summernote edi-css form-control" required></textarea>
                                                      
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-md-3 control-label">Food to reduce<span class='require'> *</span></label>
+                                                    <label class="col-md-3 control-label" >Food to reduce<span class='require'> *</span></label>
                                                     <div class="col-md-7 ">
                                                         
-                                                            <textarea name="food_to_reduce" class="summernote edi-css form-control" required></textarea>
+                                                            <textarea name="food_to_reduce" id="field_ucfirst" class="summernote edi-css form-control" required></textarea>
                                                     
                                                     </div>
                                                 </div>
@@ -371,19 +363,19 @@
                                                     <label class="col-md-3 control-label">Food to avoid<span class='require'> *</span></label>
                                                     <div class="col-md-7 ">
                                                        
-                                                            <textarea name="food_to_avoid" class="summernote edi-css form-control" required></textarea>
+                                                            <textarea name="food_to_avoid" id="field_ucfirst"  class="summernote edi-css form-control" required></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-3 control-label">Bad nutritional att<span class='require'> *</span></label>
                                                     <div class="col-md-7 ">
-                                                            <textarea name="bad_nutritional_att" class="summernote edi-css form-control" required></textarea>
+                                                            <textarea name="bad_nutritional_att"  class="summernote edi-css form-control" required></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-3 control-label">Medication<span class='require'> *</span></label>
                                                     <div class="col-md-7 ">
-                                                            <textarea name="medication" class="summernote edi-css form-control" required ></textarea>
+                                                            <textarea name="medication" id="field_ucfirst"  class="summernote edi-css form-control" required ></textarea>
                                                     </div>
                                                 </div>
 
@@ -394,9 +386,9 @@
                                                     </label>
                                                     <div class="col-md-7">
                                                         @if($consultation)
-                                                        <input class="tags_options fill_it form-control" id="activate" multiple="multiple" name="taget" value="{{$consultation->taget}}" required >
+                                                        <input class="tags_options fill_it form-control" id="field_ucfirst" multiple="multiple" name="taget" value="{{$consultation->taget}}" required >
                                                         @else
-                                                        <input class="tags_options fill_it form-control" id="activate" multiple="multiple" name="taget" required >
+                                                        <input class="tags_options fill_it form-control" id="field_ucfirst" multiple="multiple" name="taget" required >
                                                         @endif
                                                         
                                                     </div>
@@ -430,5 +422,20 @@
             <!-- /.content -->
         </aside>
         <!-- /.right-side -->
+
+        
+<script>
+
+document.getElementById("field_ucfirst").addEventListener("keypress", function(e) {
+  if(this.selectionStart == 0) {
+    // uppercase first letter
+    forceKeyPressUppercase(e);
+  } else {
+    // lowercase other letters
+    forceKeyPressLowercase(e);
+  }
+}, false);
+
+</script>
 
 @endsection

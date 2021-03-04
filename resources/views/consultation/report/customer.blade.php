@@ -39,7 +39,7 @@
                                             <th class="text-center">Sex</th>
                                             <th class="text-center">Marital</th>
                                             <th class="text-center">Occupation</th>
-                                            <th class="text-center">Cell</th>
+                                            <th class="text-center">Country</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </thead>

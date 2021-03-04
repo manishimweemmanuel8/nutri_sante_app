@@ -166,7 +166,7 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('customer.index') }}">
-                                        <i class="menu-icon text-success fa fa-pencil"></i> View Customer
+                                        <i class="menu-icon text-success fa fa-pencil"></i> Customers
                                     </a>
                                 </li>
                                 
@@ -181,15 +181,15 @@
                             </a>
                             <ul class="sub-menu">
 
-                                <li>
+                                <!-- <li>
                                     <a href="{{ route('customer.index') }}">
                                         <i class="menu-icon text-success fa fa-pencil"></i> create Payment
                                     </a>
-                                </li>
+                                </li> -->
                                 
                                 <li>
                                     <a href="{{ route('payment.index') }}">
-                                        <i class="menu-icon text-success fa fa-pencil"></i> View Payment
+                                        <i class="menu-icon text-success fa fa-pencil"></i>  Payments
                                     </a>
                                 </li>
                             </ul>
@@ -332,201 +332,7 @@
 
                         @endadmin
 
-                         @admin('production')
-
-                        <li class="menu-dropdown">
-                            <a href="#">
-                                <i class="text-info menu-icon fa fa-fw fa-newspaper-o"></i>
-                                <span class="mm-text">Product</span>
-                                <span class="fa fa-angle-down pull-right"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="{{ route('product.create') }}">
-                                        <i class="menu-icon text-success fa fa-pencil"></i> Record new product
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('product.index') }}">
-                                        <i class="menu-icon text-success fa fa-pencil"></i> View Products
-                                    </a>
-                                </li>
-                                
-                            </ul>
-                        </li>
-
-                         <li class="menu-dropdown">
-                            <a href="#">
-                                <i class="text-info menu-icon fa fa-fw fa-newspaper-o"></i>
-                                <span class="mm-text">Stock</span>
-                                <span class="fa fa-angle-down pull-right"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="{{ route('storage.create') }}">
-                                        <i class="menu-icon text-success fa fa-pencil"></i> Record product
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('storage.index') }}">
-                                        <i class="menu-icon text-success fa fa-pencil"></i> View Products
-                                    </a>
-                                </li>
-                                
-                                
-                                
-                            </ul>
-                        </li>
-
                         
-
-                        <li class="menu-dropdown">
-                            <a href="#">
-                                <i class="text-info menu-icon fa fa-fw fa-newspaper-o"></i>
-                                <span class="mm-text">Request</span>
-                                <span class="fa fa-angle-down pull-right"></span>
-                            </a>
-                            <ul class="sub-menu">
-                              
-                              
-                                 <li>
-                                    <a href="{{ route('storage.request') }}">
-                                        <i class="menu-icon text-success fa fa-pencil"></i> View Shop Request
-                                    </a>
-                                </li>
-                                
-                            </ul>
-                        </li>
-
-
-                         <li class="menu-dropdown">
-                            <a href="#">
-                                <i class="text-info menu-icon fa fa-fw fa-newspaper-o"></i>
-                                <span class="mm-text">Damage/Other</span>
-                                <span class="fa fa-angle-down pull-right"></span>
-                            </a>
-                            <ul class="sub-menu">
-                              
-                              
-                                 <li>
-                                    <a href="{{ route('damage.create') }}">
-                                        <i class="menu-icon text-success fa fa-pencil"></i> Create
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ route('damage.index') }}">
-                                        <i class="menu-icon text-success fa fa-pencil"></i> view
-                                    </a>
-                                </li>
-                                
-                            </ul>
-                        </li>
-
-                        <li class="menu-dropdown">
-                            <a href="#">
-                                <i class="text-info menu-icon fa fa-fw fa-newspaper-o"></i>
-                                <span class="mm-text">Report</span>
-                                <span class="fa fa-angle-down pull-right"></span>
-                            </a>
-                            <ul class="sub-menu">
-                              
-                              
-                                 <li>
-                                    <a href="{{ route('buckup.index') }}">
-                                        <i class="menu-icon text-success fa fa-pencil"></i> Create daily buckup
-                                    </a>
-                                </li>
-
-                                 <li>
-                                    <a href="{{ route('storage.stock') }}">
-                                        <i class="menu-icon text-success fa fa-pencil"></i> View Stock
-                                    </a>
-                                </li>
-                                
-                            </ul>
-                        </li>
-
-
-
-
-                        @endadmin
-
-                        @admin('sales')
-
-                       
-
-                        <li class="menu-dropdown">
-                            <a href="#">
-                                <i class="text-info menu-icon fa fa-fw fa-newspaper-o"></i>
-                                <span class="mm-text">Request</span>
-                                <span class="fa fa-angle-down pull-right"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                
-
-                                  <li>
-                                    <a href="{{ route('shop.request') }}">
-                                        <i class="menu-icon text-success fa fa-pencil"></i> Request Products
-                                    </a>
-                                </li>
-
-                                
-                            </ul>
-                        </li>
-
-                          <li class="menu-dropdown">
-                            <a href="#">
-                                <i class="text-info menu-icon fa fa-fw fa-newspaper-o"></i>
-                                <span class="mm-text">Sale</span>
-                                <span class="fa fa-angle-down pull-right"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                
-
-                                  <li>
-                                    <a href="{{ route('sale.sales',['id'=>rand()]) }}">
-                                        <i class="menu-icon text-success fa fa-pencil"></i> Sall Products
-                                    </a>
-                                </li>
-
-                                
-                            </ul>
-                        </li>
-
-                         <li class="menu-dropdown">
-                            <a href="#">
-                                <i class="text-info menu-icon fa fa-fw fa-newspaper-o"></i>
-                                <span class="mm-text">Report</span>
-                                <span class="fa fa-angle-down pull-right"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <!-- <li>
-                                    <a href="registerProduct.php">
-                                        <i class="menu-icon text-success fa fa-pencil"></i> Record new product
-                                    </a>
-                                </li> -->
-
-                                <li>
-                                    <a href="{{ route('backup.index') }}">
-                                        <i class="menu-icon text-success fa fa-pencil"></i> Create daily buckup
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('shop.index') }}">
-                                        <i class="menu-icon text-success fa fa-pencil"></i> View Products
-                                    </a>
-                                </li>
-                               <!--  <li>
-                                    <a href="{{ route('shop.customer') }}">
-                                        <i class="menu-icon text-success fa fa-pencil"></i> View Customer Products
-                                    </a>
-                                </li> -->
-
-                            </ul>
-                        </li>
-
-                        @endadmin
 
                         @endguest
                         
@@ -604,7 +410,7 @@
                                                         <span class='require'>*</span>
                                                     </label>
                                                     <div class="col-md-7">
-                                                         <input type="text" class="form-control" id="usr_name"  name="names" value="{{$customer->names}}">
+                                                         <input type="text"  class="form-control" id="usr_name"  name="names" value="{{$customer->names}}">
                                                     </div>
                                                 </div>
                                         
@@ -661,10 +467,10 @@
                                                 <div class="form-group">
                                                     <label class="col-md-3 control-label">
                                                         Occupation
-                                                        <span class='require'>*</span>
+                                                        <span class='require'></span>
                                                     </label>
                                                     <div class="col-md-7">
-                                                         <input type="text"  id="contact" class="form-control" name="occupation" value="{{$customer->occupation}}" />
+                                                         <input type="text"   id="contact" class="form-control" name="occupation" value="{{$customer->occupation}}" />
                                                     </div>
                                                 </div>
 
@@ -682,10 +488,10 @@
                                                 <div class="form-group">
                                                     <label class="col-md-3 control-label">
                                                         Email
-                                                        <span class='require'>*</span>
+                                                        <span class='require'></span>
                                                     </label>
                                                     <div class="col-md-7">
-                                                        <input type="text"  id="contact" class="form-control" name="email" value="{{$customer->email}}"  />
+                                                        <input type="text"  id="contact"  class="form-control" name="email" value="{{$customer->email}}"  />
                                                     </div>
                                                 </div>
                                             

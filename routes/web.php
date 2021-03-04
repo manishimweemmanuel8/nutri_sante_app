@@ -24,17 +24,17 @@ Route::GET('/nutrition/customer', 'CustomerController@index')->name('customer.in
 
 //cusotmer
 
- 	Route::get('/nutrition/customer', 'CustomerController@index')->name('customer.index');;
+ 	Route::get('/nutrition/customer', 'CustomerController@index')->name('customer.index');
 
- 	Route::get('/nutrition/customer/{id}/edit','CustomerController@edit')->name('customer.edit');;
+ 	Route::get('/nutrition/customer/{id}/edit','CustomerController@edit')->name('customer.edit');
 
-    Route::get('/nutrition/customer/{id}/delete','CustomerController@destroy')->name('customer.destroy');;
+    Route::get('/nutrition/customer/{id}/delete','CustomerController@destroy')->name('customer.destroy');
 
-    Route::get('/nutrition/customer/create','CustomerController@create')->name('customer.create');;
+    Route::get('/nutrition/customer/create','CustomerController@create')->name('customer.create');
 
-    Route::post('/nutrition/customer/create','CustomerController@store')->name('customer.store');;
+    Route::post('/nutrition/customer/create','CustomerController@store')->name('customer.store');
 
-    Route::post('/nutrition/customer/update','CustomerController@update')->name('customer.update');;
+    Route::post('/nutrition/customer/update','CustomerController@update')->name('customer.update');
 
     Route::get('get-sector-list','CustomerController@getSectorList');
     Route::get('get-cell-list','CustomerController@getCellList');
@@ -69,7 +69,7 @@ Route::GET('/nutrition/customer', 'CustomerController@index')->name('customer.in
 
     Route::post('/nutrition/payment/update','PaymentController@update')->name('payment.update');
 
-       Route::get('/nutrition/payment/daily', 'PaymentController@dailySalesReport')->name('payment.daily'); 
+   Route::get('/nutrition/payment/daily', 'PaymentController@dailySalesReport')->name('payment.daily'); 
 
 
 
@@ -183,7 +183,7 @@ Route::GET('/nutrition/customer', 'CustomerController@index')->name('customer.in
 
     //document route
 
-    Route::get('/nutrition/document', 'DocumentController@index')->name('customer.index');
+    Route::get('/nutrition/document', 'DocumentController@index')->name('document.index');
 
  	Route::get('/nutrition/document/{id}/edit','DocumentController@edit')->name('document.edit');
 
@@ -195,10 +195,8 @@ Route::GET('/nutrition/customer', 'CustomerController@index')->name('customer.in
 
     Route::post('/nutrition/document/update','DocumentController@update')->name('document.update');
     Route::get('/nutrition/document/download/{file}','DocumentController@download')->name('document.download');
-   //  Route::get('/nutrition/document/{id}/show','DocumentController@show')->name('document.show');
 
-
-
+//  Route::get('/nutrition/document/{id}/show','DocumentController@show')->name('document.show');
 
 // Route::get('/school/report', 'ReportController@index')->name('report.index');
 // Route::get('/school/report/{id}/edit','ReportController@edit')->name('report.edit');

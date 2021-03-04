@@ -75,7 +75,7 @@
                                                {{ $customer->country }}
                                             </td>
 
-                                           @if($customer->country == 'rwanda')
+                                           @if($customer->country == 'Rwanda')
                                              <td>
                                                {{DB::table('districts')->where('id',$customer->district_id)->value('name')}}
 

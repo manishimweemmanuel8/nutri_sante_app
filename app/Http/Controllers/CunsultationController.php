@@ -77,9 +77,9 @@ class CunsultationController extends Controller
             'payment_id'=>'required',
             'weight'=>'required',
             'height'=>'required',
-            'ct_munda'=>'required',
+            // 'ct_munda'=>'required',
             'ct_ukuboko'=>'required',
-            'diagnosis'=>'required',
+            // 'diagnosis'=>'required',
             'associated_deseases'=>'required',
             'reason'=>'required',
         ]);
@@ -94,7 +94,6 @@ class CunsultationController extends Controller
         $consultation->height= $request->input('height');
         $consultation->ct_munda= $request->input('ct_munda');
         $consultation->ct_ukuboko= $request->input('ct_ukuboko');
-         $consultation->diagnosis= $request->input('diagnosis');
         $consultation->associated_deseases= $request->input('associated_deseases');
         $consultation->reason= $request->input('reason');
         $consultation->bmi=$request->input('weight')/($request->input('height')*$request->input('height'));

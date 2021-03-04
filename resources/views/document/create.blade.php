@@ -62,7 +62,7 @@
                                                         <span class='require'>*</span>
                                                     </label>
                                                     <div class="col-md-7">
-                                                        <textarea type="text"  id="contact" class="form-control" name="description">   </textarea>
+                                                        <textarea type="text" id="contact" class="form-control" name="description">   </textarea>
                                                     </div>
                                                 </div>
 
