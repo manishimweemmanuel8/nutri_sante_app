@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Appointment;
 use Illuminate\Http\Request;
 
-class AppointmentController extends Controller
+class AppointmentController extends Controller 
 {
     /**
      * Display a listing of the resource.

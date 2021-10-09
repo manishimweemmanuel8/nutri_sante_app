@@ -78,7 +78,7 @@
                     </div>
                     <input type="submit" class="btn btn-block btn-warning" value="Log In">
                 </form>
-                <p class="text-right"><a href="{{route('admin.password.request')}}" class="text-warning forgot_color" style="color: white">Forgot Password?</a></p>
+                <!-- <p class="text-right"><a href="{{route('admin.password.request')}}" class="text-warning forgot_color" style="color: white">Forgot Password?</a></p> -->
             </div>
         </div>
     </div>

@@ -43,10 +43,17 @@
 
         <!-- <aside class="right-side right-padding"> -->
 
-            <img src="{{asset('asset/admin/img/IMG-20200304-WA0013.jpg')}}" style="width:80rem; margin-left: auto; margin-right: auto; display: block; margin-top:30px; margin-bottom:15px" class="logo" alt="image not found">
-
+            <!-- <img src="{{asset('asset/admin/img/logo2.png')}}" style="width:80rem; margin-left: auto; margin-right: auto; display: block; margin-top:30px; margin-bottom:15px" class="logo" alt="image not found"> -->
+            
+            <div style="display:flex; flex-direction:row; justify-content: space-between; align-items: space-between; margin:2rem 4rem  ">
+                <div><img src="{{asset('asset/admin/img/logo2.png')}}" style="width:30% " class="logo" alt="image not found"> </div> 
+                <div>
+                    <h2>Tel: 0788888888</h2> 
+                    <h2>Location: Kicukiro</h2>
+                </div>
+            </div>
             <!--section ends-->
-            <div class="container-fluid">
+            <div class="container-fluid">  
                 <!--main content-->
 
             <!-- ============================================================== -->
@@ -57,8 +64,7 @@
                 <div class="content">
                     <div class="container-fluid">
                     <h2 style="text-align: center"><u>NUTRITIONAL CONSULTATION FORM</u></h2>
-                    <br>
-                    <br>
+                   
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="panel-body mt-3">
@@ -67,15 +73,19 @@
                                         <div class="col-sm-4">
                                             <div class="m-t-30 pull-left">
                                                 <p class="mb-1"><small><strong>Names: </strong></small> {{$consultation->customer->names}}</p>
-                                                 <p class="mb-1"><small><strong>Age: </strong></small>{{\Carbon\Carbon::parse($consultation->customer->dob)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days')}}</p>
-                                                <p class="mb-1"><small><strong>Sex: </strong></small>{{$consultation->customer->sex}}</p>
+                                                @if(\Carbon\Carbon::parse($consultation->customer->dob)->diff(\Carbon\Carbon::now())->format('%y') >= 18)
+                                                <p class="mb-1"><small><strong>Ages: </strong></small>{{\Carbon\Carbon::parse($consultation->customer->dob)->diff(\Carbon\Carbon::now())->format('%y')}}</p>
+                                                    @else
+                                                 <p class="mb-1"><small><strong>Ages: </strong></small>{{\Carbon\Carbon::parse($consultation->customer->dob)->diff(\Carbon\Carbon::now())->format('%y years, %m months ')}}</p>
+                                                @endif
+                                                 <p class="mb-1"><small><strong>Sex: </strong></small>{{$consultation->customer->sex}}</p>
                                                 <p class="mb-1"><small><strong>Contact: </strong></small>{{$consultation->customer->phone_no}}</p>
                                             </div>
                                         </div><!-- end col -->
                                         <div class="col-sm-4">
                                             <!-- <div class="m-t-30 pull-right"> -->
                                                 <p class="mb-1"><small><strong>Weight: </strong></small>{{$consultation->weight}} kg</p>
-                                                <p class="mb-1"><small><strong>Height: </strong></small> {{$consultation->height}} cm</p>
+                                                <p class="mb-1"><small><strong>Height: </strong></small> {{$consultation->height}} m</p>
                                                 <!-- <p class="mb-1"><small><strong>BMI: </strong></small> {{$consultation->bmi}} </p> -->
                                                 <p class="mb-1"><small><strong>W. cir: </strong></small> {{$consultation->ct_munda}}</p>
                                                 {{-- @if(is_null($consultation->customer->country))
@@ -260,7 +270,6 @@
             </div>
             <!-- /.content -->
         <!-- </aside> -->
-
         {{-- @endforeach --}}
        
 
