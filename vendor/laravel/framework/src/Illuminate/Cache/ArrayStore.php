@@ -24,7 +24,7 @@ class ArrayStore extends TaggableStore
     public function get($key)
     {
         if (! isset($this->storage[$key])) {
-            return;
+            return null;
         }
 
         $item = $this->storage[$key];
@@ -34,7 +34,7 @@ class ArrayStore extends TaggableStore
         if ($expiresAt !== 0 && $this->currentTime() > $expiresAt) {
             $this->forget($key);
 
-            return;
+            return null;
         }
 
         return $item['value'];
@@ -110,13 +110,9 @@ class ArrayStore extends TaggableStore
      */
     public function forget($key)
     {
-        if (array_key_exists($key, $this->storage)) {
-            unset($this->storage[$key]);
+        unset($this->storage[$key]);
 
-            return true;
-        }
-
-        return false;
+        return true;
     }
 
     /**

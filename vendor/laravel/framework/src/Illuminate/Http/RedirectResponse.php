@@ -68,7 +68,7 @@ class RedirectResponse extends BaseRedirectResponse
     /**
      * Flash an array of input to the session.
      *
-     * @param  array|null  $input
+     * @param  array  $input
      * @return $this
      */
     public function withInput(array $input = null)

@@ -6,12 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use DB;
-use Input;
-use App\Product_store;
-use App\Production_store;
-use App\ShopBuckup;
-use App\StockBuckup;
 
 class LoginController extends Controller
 {
@@ -68,7 +62,6 @@ class LoginController extends Controller
     protected function credentials(Request $request)
     {
         $request['active'] = 1;
-        
 
         return $request->only($this->username(), 'password', 'active');
     }
@@ -83,8 +76,6 @@ class LoginController extends Controller
         $this->guard()->logout();
 
         $request->session()->invalidate();
-
-     
 
         return redirect(route('admin.login'));
     }
@@ -111,10 +102,7 @@ class LoginController extends Controller
         $request->validate([
             'email'    => 'required|string',
             'password' => 'required|string',
-            // 'shop' => 'required|string',
         ]);
-        // DB::table('admins')->where('email',$request->Input('email'))
-        //      ->update(['shop' => $request->Input('shop')]);
     }
 
     protected function redirectPath()
