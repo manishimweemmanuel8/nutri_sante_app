@@ -5,7 +5,6 @@ namespace Illuminate\Foundation\Bootstrap;
 use Dotenv\Dotenv;
 use Dotenv\Environment\DotenvFactory;
 use Dotenv\Exception\InvalidFileException;
-use Dotenv\Environment\Adapter\PutenvAdapter;
 use Symfony\Component\Console\Input\ArgvInput;
 use Dotenv\Environment\Adapter\EnvConstAdapter;
 use Illuminate\Contracts\Foundation\Application;
@@ -89,7 +88,7 @@ class LoadEnvironmentVariables
         return Dotenv::create(
             $app->environmentPath(),
             $app->environmentFile(),
-            new DotenvFactory([new EnvConstAdapter, new ServerConstAdapter, new PutenvAdapter])
+            new DotenvFactory([new EnvConstAdapter, new ServerConstAdapter])
         );
     }
 

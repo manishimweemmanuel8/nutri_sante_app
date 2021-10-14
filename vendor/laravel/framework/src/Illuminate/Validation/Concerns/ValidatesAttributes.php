@@ -20,10 +20,6 @@ use Egulias\EmailValidator\EmailValidator;
 use Symfony\Component\HttpFoundation\File\File;
 use Egulias\EmailValidator\Validation\RFCValidation;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Egulias\EmailValidator\Validation\DNSCheckValidation;
-use Egulias\EmailValidator\Validation\SpoofCheckValidation;
-use Egulias\EmailValidator\Validation\NoRFCWarningsValidation;
-use Egulias\EmailValidator\Validation\MultipleValidationWithAnd;
 
 trait ValidatesAttributes
 {
@@ -250,7 +246,7 @@ trait ValidatesAttributes
                 return Date::parse($value);
             }
 
-            return date_create($value) ?: null;
+            return new DateTime($value);
         } catch (Exception $e) {
             //
         }
@@ -625,35 +621,12 @@ trait ValidatesAttributes
      * Validate that an attribute is a valid e-mail address.
      *
      * @param  string  $attribute
-     * @param  mixed  $value
-     * @param  array  $parameters
+     * @param  mixed   $value
      * @return bool
      */
-    public function validateEmail($attribute, $value, $parameters)
+    public function validateEmail($attribute, $value)
     {
-        if (! is_string($value) && ! (is_object($value) && method_exists($value, '__toString'))) {
-            return false;
-        }
-
-        $validations = collect($parameters)
-            ->unique()
-            ->map(function ($validation) {
-                if ($validation === 'rfc') {
-                    return new RFCValidation();
-                } elseif ($validation === 'strict') {
-                    return new NoRFCWarningsValidation();
-                } elseif ($validation === 'dns') {
-                    return new DNSCheckValidation();
-                } elseif ($validation === 'spoof') {
-                    return new SpoofCheckValidation();
-                } elseif ($validation === 'filter') {
-                    return new FilterEmailValidation();
-                }
-            })
-            ->values()
-            ->all() ?: [new RFCValidation()];
-
-        return (new EmailValidator)->isValid($value, new MultipleValidationWithAnd($validations));
+        return (new EmailValidator)->isValid($value, new RFCValidation);
     }
 
     /**
@@ -734,10 +707,6 @@ trait ValidatesAttributes
 
         if (isset($parameters[2])) {
             [$idColumn, $id] = $this->getUniqueIds($parameters);
-
-            if (! is_null($id)) {
-                $id = stripslashes($id);
-            }
         }
 
         // The presence verifier is responsible for counting rows within this store
@@ -914,9 +883,7 @@ trait ValidatesAttributes
             return $this->getSize($attribute, $value) > $parameters[0];
         }
 
-        if (! $this->isSameType($value, $comparedToValue)) {
-            return false;
-        }
+        $this->requireSameType($value, $comparedToValue);
 
         return $this->getSize($attribute, $value) > $this->getSize($attribute, $comparedToValue);
     }
@@ -941,9 +908,7 @@ trait ValidatesAttributes
             return $this->getSize($attribute, $value) < $parameters[0];
         }
 
-        if (! $this->isSameType($value, $comparedToValue)) {
-            return false;
-        }
+        $this->requireSameType($value, $comparedToValue);
 
         return $this->getSize($attribute, $value) < $this->getSize($attribute, $comparedToValue);
     }
@@ -968,9 +933,7 @@ trait ValidatesAttributes
             return $this->getSize($attribute, $value) >= $parameters[0];
         }
 
-        if (! $this->isSameType($value, $comparedToValue)) {
-            return false;
-        }
+        $this->requireSameType($value, $comparedToValue);
 
         return $this->getSize($attribute, $value) >= $this->getSize($attribute, $comparedToValue);
     }
@@ -995,9 +958,7 @@ trait ValidatesAttributes
             return $this->getSize($attribute, $value) <= $parameters[0];
         }
 
-        if (! $this->isSameType($value, $comparedToValue)) {
-            return false;
-        }
+        $this->requireSameType($value, $comparedToValue);
 
         return $this->getSize($attribute, $value) <= $this->getSize($attribute, $comparedToValue);
     }
@@ -1011,7 +972,7 @@ trait ValidatesAttributes
      */
     public function validateImage($attribute, $value)
     {
-        return $this->validateMimes($attribute, $value, ['jpeg', 'png', 'gif', 'bmp', 'svg', 'webp']);
+        return $this->validateMimes($attribute, $value, ['jpeg', 'png', 'gif', 'bmp', 'svg']);
     }
 
     /**
@@ -1564,19 +1525,6 @@ trait ValidatesAttributes
     }
 
     /**
-     * Validate the attribute ends with a given substring.
-     *
-     * @param  string  $attribute
-     * @param  mixed   $value
-     * @param  array   $parameters
-     * @return bool
-     */
-    public function validateEndsWith($attribute, $value, $parameters)
-    {
-        return Str::endsWith($value, $parameters);
-    }
-
-    /**
      * Validate that an attribute is a string.
      *
      * @param  string  $attribute
@@ -1630,7 +1578,7 @@ trait ValidatesAttributes
             ((aaa|aaas|about|acap|acct|acr|adiumxtra|afp|afs|aim|apt|attachment|aw|barion|beshare|bitcoin|blob|bolo|callto|cap|chrome|chrome-extension|cid|coap|coaps|com-eventbrite-attendee|content|crid|cvs|data|dav|dict|dlna-playcontainer|dlna-playsingle|dns|dntp|dtn|dvb|ed2k|example|facetime|fax|feed|feedready|file|filesystem|finger|fish|ftp|geo|gg|git|gizmoproject|go|gopher|gtalk|h323|ham|hcp|http|https|iax|icap|icon|im|imap|info|iotdisco|ipn|ipp|ipps|irc|irc6|ircs|iris|iris.beep|iris.lwz|iris.xpc|iris.xpcs|itms|jabber|jar|jms|keyparc|lastfm|ldap|ldaps|magnet|mailserver|mailto|maps|market|message|mid|mms|modem|ms-help|ms-settings|ms-settings-airplanemode|ms-settings-bluetooth|ms-settings-camera|ms-settings-cellular|ms-settings-cloudstorage|ms-settings-emailandaccounts|ms-settings-language|ms-settings-location|ms-settings-lock|ms-settings-nfctransactions|ms-settings-notifications|ms-settings-power|ms-settings-privacy|ms-settings-proximity|ms-settings-screenrotation|ms-settings-wifi|ms-settings-workplace|msnim|msrp|msrps|mtqp|mumble|mupdate|mvn|news|nfs|ni|nih|nntp|notes|oid|opaquelocktoken|pack|palm|paparazzi|pkcs11|platform|pop|pres|prospero|proxy|psyc|query|redis|rediss|reload|res|resource|rmi|rsync|rtmfp|rtmp|rtsp|rtsps|rtspu|secondlife|s3|service|session|sftp|sgn|shttp|sieve|sip|sips|skype|smb|sms|smtp|snews|snmp|soap.beep|soap.beeps|soldat|spotify|ssh|steam|stun|stuns|submit|svn|tag|teamspeak|tel|teliaeid|telnet|tftp|things|thismessage|tip|tn3270|turn|turns|tv|udp|unreal|urn|ut2004|vemmi|ventrilo|videotex|view-source|wais|webcal|ws|wss|wtai|wyciwyg|xcon|xcon-userid|xfire|xmlrpc\.beep|xmlrpc.beeps|xmpp|xri|ymsgr|z39\.50|z39\.50r|z39\.50s))://                                 # protocol
             (([\pL\pN-]+:)?([\pL\pN-]+)@)?          # basic auth
             (
-                ([\pL\pN\pS\-\_\.])+(\.?([\pL]|xn\-\-[\pL\pN-]+)+\.?) # a domain name
+                ([\pL\pN\pS\-\.])+(\.?([\pL]|xn\-\-[\pL\pN-]+)+\.?) # a domain name
                     |                                              # or
                 \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}                 # an IP address
                     |                                              # or
@@ -1765,15 +1713,19 @@ trait ValidatesAttributes
     }
 
     /**
-     * Check if the parameters are of the same type.
+     * Require comparison values to be of the same type.
      *
      * @param  mixed  $first
      * @param  mixed  $second
-     * @return bool
+     * @return void
+     *
+     * @throws \InvalidArgumentException
      */
-    protected function isSameType($first, $second)
+    protected function requireSameType($first, $second)
     {
-        return gettype($first) == gettype($second);
+        if (gettype($first) != gettype($second)) {
+            throw new InvalidArgumentException('The values under comparison must be of the same type');
+        }
     }
 
     /**

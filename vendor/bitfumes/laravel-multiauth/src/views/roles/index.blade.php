@@ -47,11 +47,4 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    function confirmation() {
-      return confirm('Are you sure you want to do this?');
-    }
-</script>
-
 @endsection
