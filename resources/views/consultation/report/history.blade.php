@@ -29,10 +29,10 @@
         <div class="content row">
             <div class="content-text">
                 <h1>Anthropometric Measurements</h1>
-                <p> <b>Height:</b>  </p>
-                <p> <b>Weight:</b> </p>
-                <p> <b>BMI:</b> </p>
-                <p> <b>Waist to Hip Ratio (WHR):</b> </p>
+                <p> <b>Height:</b> 1.80 cm </p>
+                <p> <b>Weight:</b>  72 kg </p>
+                <p> <b>BMI:</b> 24 </p>
+                <p> <b>Waist to Hip Ratio (WHR):</b>  dd </p>
             </div>
             <div style="margin-top: 2rem" class="content-text">
                 <p> <b>Others:</b> Success stories: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
@@ -42,36 +42,19 @@
     <div class="row content">
         <div class="right-side">
             <h1>Last recommendation review</h1>
-            <p>Success stories: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+            <p> <b>Success stories:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam.</p>
 
-            <p>Difficulties:Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+            <p> <b>Difficulties:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam. </p>
 
-            <p>Today visit goal/reason: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+            <p> <b> Today visit goal/reason:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam. </p>
 
         </div>
-        <!-- <div class="left-side">
-            <div class="col">
-                <h2>Cheap</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam.</p>
-            </div>
-            <div class="col">
-                <h2>Quick</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam.</p>
-            </div>
-            <div class="col">
-                <h2>Quality</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam.</p>
-            </div>
-        </div> -->
     </div>
     <div class="row content">
         <div class="right-side">
